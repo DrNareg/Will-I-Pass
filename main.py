@@ -1,10 +1,10 @@
-category_weights = {"Attendance":[0,0], "Homework":[0,0]}
+category_weights = {"Attendance":[20,100], "Homework":[50,100], "Final":[30,0]}
 symbol = "%"
 
 # Just a simple intro to the program
 def intro():
     print("So you're here to check how screwed you are. lol")
-    print("Just a few notes:\nNo need for " + symbol+ " sign \nEnter 0 for any un-needed categories\n")
+    print("Just a few notes:\nNo need for " + symbol+ " sign \nEnter 0 (weight) for any un-needed categories\n")
 
 # Function to collect important data for the dictionary
 def collect_data():
@@ -32,5 +32,14 @@ def collect_data():
 
     #print(category_weights)
 
+def the_math():
+    goal = float(input("What is your target grade?(ex:100) "))
+    Att = category_weights["Attendance"][0] * category_weights["Attendance"][1] *.01
+    HW = category_weights["Homework"][0] * category_weights["Homework"][1] *.01
+    Final_weight = category_weights["Final"][0]
+    x = (goal-(Att+HW))/(Final_weight*.01)
+    print(x)
+    
 
-collect_data()
+the_math()
+#collect_data()
