@@ -1,4 +1,4 @@
-category_weights = {"Attendance":[20,100], "Homework":[50,100], "Final":[30,0]}
+category_weights = {"Attendance":[10,100], "Homework":[70,100], "Final":[20,0]}
 symbol = "%"
 
 # Just a simple intro to the program
@@ -34,12 +34,22 @@ def collect_data():
 
 def the_math():
     goal = float(input("What is your target grade?(ex:100) "))
-    Att = category_weights["Attendance"][0] * category_weights["Attendance"][1] *.01
-    HW = category_weights["Homework"][0] * category_weights["Homework"][1] *.01
-    Final_weight = category_weights["Final"][0]
-    x = (goal-(Att+HW))/(Final_weight*.01)
-    print(x)
-    
+    # Float is not iterable, also to be able to print f string
+    str_goal = str(goal)
 
+    # check if input includes %
+    while symbol in str_goal:
+        print("No more % \signs!")
+        goal = float(input("Enter your target grade(ex:100) "))  
+        str_goal = str(goal)
+    # The math part:
+    Att = int(category_weights["Attendance"][0]) * int(category_weights["Attendance"][1]) *.01
+    HW = int(category_weights["Homework"][0]) * int(category_weights["Homework"][1]) *.01
+    Final_weight = int(category_weights["Final"][0])
+    x = (goal-(Att+HW))/(Final_weight*.01)
+    str_x = str(round(x, 2))
+    print(f"To get an overall grade of " + str_goal + "you will need " + str_x + " on the final!")
+    
+intro()
+collect_data()
 the_math()
-#collect_data()
