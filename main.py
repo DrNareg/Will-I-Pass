@@ -49,7 +49,12 @@ def the_math():
     # Rounding
     str_x = str(round(x, 2))
     print(f"To get an overall grade of " + goal + " you will need " + str_x + " on the final!")
-    
-intro()
-collect_data()
-the_math()
+
+
+def main():
+    intro()
+    collect_data()
+    the_math()
+
+if __name__ == "__main__":
+    main() 
