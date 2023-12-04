@@ -1,4 +1,4 @@
-category_weights = {"Attendance":[10,100], "Homework":[60,100], "Final":[20,0], "Midterm":[10,0]}
+category_weights = {"Attendance":[10,0], "Homework":[50,0], "Midterm":[20,0], "Final":[20,0]}
 symbol = "%"
 
 # Just a simple intro to the program
@@ -41,14 +41,14 @@ def the_math():
     #float_goal = float(goal)
 
     # The math part:
-    Att = int(category_weights["Attendance"][0]) * int(category_weights["Attendance"][1]) *.01
-    HW = int(category_weights["Homework"][0]) * int(category_weights["Homework"][1]) *.01
-    Midterm = int(category_weights["Midterm"][0]) * int(category_weights["Midterm"][1]) *.01
+    Att = float(category_weights["Attendance"][0]) * float(category_weights["Attendance"][1]) *.01
+    HW = float(category_weights["Homework"][0]) * float(category_weights["Homework"][1]) *.01
+    Midterm = float(category_weights["Midterm"][0]) * float(category_weights["Midterm"][1]) *.01
     Final_weight = int(category_weights["Final"][0])
     x = (float(goal)-(Att+HW+Midterm))/(Final_weight*.01)
     # Rounding
     str_x = str(round(x, 2))
-    print(f"To get an overall grade of " + goal + "you will need " + str_x + " on the final!")
+    print(f"To get an overall grade of " + goal + " you will need " + str_x + " on the final!")
     
 intro()
 collect_data()
